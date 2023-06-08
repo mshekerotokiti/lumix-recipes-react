@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import NavBar from "./NavBar";
 import Search from "./Search"
 
-const RecipePage = ({postToCart,fetchSingleRecipe, fetchCartItems}) => {
+const RecipePage = ({postToCart, fetchSingleRecipe, fetchCartItems}) => {
 const [search, setSearch] = useState("")
 const[recipes,setRecipe]= useState([])
 const[dropDown,setDropDown] = useState("All")
@@ -36,23 +36,13 @@ const[dropDown,setDropDown] = useState("All")
 
 
     return ( 
-        <>
         <div>
-        
-        <video class="video" muted autoPlay={"autopnpmlay"} preload="auto" loop>
-            <source src="Food - 24999 (1).mp4" type="video/mp4" />
-        </video>
-        
-        <div id='recipe-page'>
-        <NavBar fetchCartItems = {fetchCartItems}/>
-        <Search search={search} setSearch={setSearch} setDropDown={setDropDown} />
-        {/* <PotentialFeaturedRecipe? /> */}
-         {/* <PotentialRandomizerMultipleRecipes? /> */}
-        <Recipes recipes = {dropDownRecipes} fetchSingleRecipe={fetchSingleRecipe} postToCart={postToCart}/>
+            <div id='recipe-page'>
+                <NavBar fetchCartItems = {fetchCartItems}/>
+                <Search search={search} setSearch={setSearch} setDropDown={setDropDown} />
+                <Recipes recipes = {dropDownRecipes} fetchSingleRecipe={fetchSingleRecipe} postToCart={postToCart}/>
+            </div>
         </div>
-        
-        </div>
-        </>
      );
 }
  

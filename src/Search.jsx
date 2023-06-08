@@ -1,9 +1,9 @@
+import InputGroup from 'react-bootstrap/InputGroup'
+
 function Search ({search,setSearch,setDropDown}){
     
   
     return( 
-        
-          
 
     <div id = "searchbar" >
     <input type = "text" className = "recipe_search" value = {search} onChange = {(e) => {setSearch(e.target.value)}} placeholder="Filter"/> <br/>
