@@ -8,18 +8,6 @@ const SingleRecipe = ({ singleRecipe }) => {
         <Figure.Image src={singleRecipe[0].image} alt="" width={250} height={180} />
         <Figure.Caption>{singleRecipe[0].name}</Figure.Caption>
       </Figure>
-      
-      {singleRecipe[1].map((recipe) => {
-        return(
-            <ul>
-                 <li>{recipe.name}</li>
-                <li>{recipe.ingredient}</li>
-                <li>{recipe.quantity}</li>
-                </ul>
-             
-                )
-                
-              })}
       <div id="instructions">
         <h4>Cooking Instructions:</h4>
         <br />

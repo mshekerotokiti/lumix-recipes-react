@@ -1,10 +1,10 @@
-// import "./App.css"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RecipePage from "./RecipePage";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import SingleRecipe from "./SingleRecipe";
+import { Auth } from "./Auth";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -27,16 +27,27 @@ function App() {
   };
 
   useEffect(() => {
-    postToCart();
+    const fetchRecipe = async () => {
+      try {
+        const response = await fetch("http://localhost:9292/recipes");
+        const data = await response.json();
+        const recipe = data[0]; // Assuming you want the first recipe from the response
+        postToCart(recipe); // Pass the fetched recipe object to postToCart
+      } catch (error) {
+        console.log("Error fetching recipe:", error);
+      }
+    };
+
+    fetchRecipe(); // Call fetchRecipe to fetch the recipe object
   }, []);
 
-  function fetchSingleRecipe(id) {
+  const fetchSingleRecipe = (id) => {
     console.log(id);
     fetch(`http://localhost:9292/recipes/${id}`)
       .then((res) => res.json())
       .then((res) => setSingleRecipe(res));
     console.log(singleRecipe);
-  }
+  };
 
   const fetchCartItems = async () => {
     let req = await fetch("http://localhost:9292/cart_items");
@@ -52,10 +63,14 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <Auth />,
+    },
+    {
+      path: "/recipe",
       element: (
         <>
           <RecipePage
-            fetchSingleRecipe={fetchSingleRecipe}
+            singleRecipe={singleRecipe}
             postToCart={postToCart}
             fetchCartItems={fetchCartItems}
           />
@@ -79,7 +94,7 @@ function App() {
           <Cart
             cartItems={cartItems}
             setCartItems={setCartItems}
-            addToCart={postToCart} // Renamed addToCart to postToCart
+            addToCart={postToCart}
           />
         </>
       ),

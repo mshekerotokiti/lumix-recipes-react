@@ -1,4 +1,5 @@
 const Cart = ({ cartItems }) => {
+  
   const recipe = cartItems[0]?.map((rec) => (
     <div className="cart-recipe" key={rec.id}>
       <img src={rec.image} alt={rec.name} />

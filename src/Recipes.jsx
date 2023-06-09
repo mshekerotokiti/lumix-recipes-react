@@ -29,11 +29,12 @@ function Recipes({ recipes, postToCart, fetchSingleRecipe }) {
     <Row>
       {recipes.map((recipe) => (
         <Col key={recipe.id}>
-          <Card style={{ width: '16rem' }} id={recipe.id}>
-            <Card.Img variant="top" src={recipe.image} />
+          <Card style={{ height: "430px", width: '17rem' }} id={recipe.id} >
+          <Button type="button" class="btn-close btn-close-white" disabled aria-label="Close">x</Button>
+            <Card.Img variant="top" src={recipe.image}/>
             <Card.Body>
               <Card.Title>{recipe.name}</Card.Title>
-              <Button onClick={() => postToCart(recipe)}>Cart</Button>
+              <Button onClick={() => {postToCart(recipe)}}>Cart</Button>
               <Button
                 variant="primary"
                 onClick={() => {
@@ -43,8 +44,9 @@ function Recipes({ recipes, postToCart, fetchSingleRecipe }) {
               >
                 Favorite
               </Button>
-              <Button className= "buttons" onClick={(e) => {fetchSingleRecipe(recipe.id)
-              navigate('/singlerecipe')}}>Info</Button>
+              <Button className= "buttons" onClick={(e) => {
+                fetchSingleRecipe(recipe.id)
+                navigate('/singlerecipe')}}>Info</Button>
             </Card.Body>
           </Card>
         </Col>

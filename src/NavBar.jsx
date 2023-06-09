@@ -10,23 +10,23 @@ function NavBar ({search , setSearch, fetchCartItems}){
         setSearch(event.target.value)
     }
     return(
-        <Navbar bg="dark"  className="justify-content-end">
-        <img onClick={() => {navigate('/')}} src="" alt="QuickCartLogo" href="/" style={{disply:'flex', justifyContent:'left'}}/> 
-        <ButtonGroup aria-label="Basic example" >
-            <Button onClick={(e) => {
-                console.log("hello!")
-                fetch("http://localhost:9292/cart_items", {
-                    method: "DELETE",
-                })
-            }}>
+        <header>
+            <Navbar bg="dark"  className="justify-content-end"  class="navbar" style={{backgroundColor: "#e3f2fd"}}>
+                <img onClick={() => {navigate('/')}} src="" alt="QuickCartLogo" href="/" style={{disply:'flex', justifyContent:'left'}}/>
+                <ButtonGroup aria-label="Basic example" >
+                    <Button onClick={(e) => {
+                      console.log("hello!")
+                     fetch("http://localhost:9292/cart_items", {method: "DELETE",})
+                     }}>
                  New Cart
                  </Button>
-            <Button onClick={() => {fetchCartItems()
-            navigate('/Cart')}} className = "Cart">
-                 Cart
-            </Button>
-        </ButtonGroup>
-      </Navbar>
+                 <Button onClick={() => {fetchCartItems()
+                    navigate('/Cart')}} className = "Cart">
+                        Cart
+                </Button>
+                </ButtonGroup>
+            </Navbar>
+        </header>
     )
 }
 

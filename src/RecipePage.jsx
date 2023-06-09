@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import NavBar from "./NavBar";
 import Search from "./Search"
 
-const RecipePage = ({postToCart, fetchSingleRecipe, fetchCartItems}) => {
+const RecipePage = ({postToCart, single, fetchCartItems}) => {
 const [search, setSearch] = useState("")
 const[recipes,setRecipe]= useState([])
 const[dropDown,setDropDown] = useState("All")
@@ -40,7 +40,7 @@ const[dropDown,setDropDown] = useState("All")
             <div id='recipe-page'>
                 <NavBar fetchCartItems = {fetchCartItems}/>
                 <Search search={search} setSearch={setSearch} setDropDown={setDropDown} />
-                <Recipes recipes = {dropDownRecipes} fetchSingleRecipe={fetchSingleRecipe} postToCart={postToCart}/>
+                <Recipes recipes = {dropDownRecipes} fetchSingleRecipe={single} postToCart={postToCart}/>
             </div>
         </div>
      );
